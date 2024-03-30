@@ -1,12 +1,12 @@
 const movieNameRef = document.getElementById("movieName");
 const searchBtn = document.getElementById("searchBtn");
 const result = document.getElementById("result");
-key="5f982077";
+key = "5f982077";
 const getMovie = () => {
   const movieName = movieNameRef.value;
   const url = `http://www.omdbapi.com/?t=${movieName}&apikey=${key}`;
   if (movieName.length <= 0) {
-    result.innerHTML = `<h3 class="msg">Please Enter Movie Name</h3>`;
+    result.innerHTML = `<h3 class="msg"></h3>`;
   } else {
     fetch(url)
       .then((resp) => resp.json())
@@ -14,7 +14,7 @@ const getMovie = () => {
         if (data.Response == "True") {
           console.log(data);
           console.log(data.Poster);
-          console.log(data.Title);  
+          console.log(data.Title);
           console.log(data.imdbRating);
           console.log(data.Rated);
           console.log(data.Year);
@@ -33,9 +33,10 @@ const getMovie = () => {
                         <h4>${data.imdbRating}</h4>
                     </div>
                     <div class="details">
-                        <sapn>${data.Rated}</span>
-                        <sapn>${data.Year}</span>
-                        <sapn>${data.Runtime}</span>
+                        <span>${data.Type}</span>
+                        <span>${data.Rated}</span>
+                        <span>${data.Year}</span>
+                        <span>${data.Runtime}</span>
                     </div>
                     <div class="genre">
                         <div>${data.Genre.split(",").join("</div><div>")}</div>
@@ -46,13 +47,15 @@ const getMovie = () => {
             <p>${data.Plot}</p>
             <h3>Cast:</h3>
             <p>${data.Actors}</p>
-               
+            <h3>Director & Writer: </h3>
+            <p>${data.Director}, ${data.Writer}</p>
+            <h3>Awards:</h3>
+            <p>${data.Awards}</p>
         `;
         } else {
-          result.innerHTML = `<h3 class="msg">${data.error()}</h3>`;
+          result.innerHTML = `<h3 class="msg">Enter Valid Movie Name</h3>`;
         }
       });
-
   }
 };
 searchBtn.addEventListener("click", getMovie);
