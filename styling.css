@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -7,9 +8,35 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(#0f3057, #ff6f61);
+  background: radial-gradient(
+    circle at -8.9% 51.2%,
+    rgb(255, 124, 0) 0%,
+    rgb(255, 124, 0) 15.9%,
+    rgb(255, 163, 77) 15.9%,
+    rgb(255, 163, 77) 24.4%,
+    rgb(19, 30, 37) 24.5%,
+    rgb(19, 30, 37) 66%
+  );
 }
-
+.welcome {
+  text-align: center;
+  position: relative;
+  margin-top: 200px;
+  font-size: 50px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+  animation: welcome 4s 1;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+@keyframes welcome {
+  0% {
+    top: -200px;
+  }
+  100% {
+    top: 0px;
+  }
+}
 .container {
   font-size: 18px;
   width: 90%;
@@ -22,6 +49,15 @@ body {
   transform: translate(-50%, -50%);
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  animation: box 4s 1;
+}
+@keyframes box {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
 
 .search-container {
@@ -70,7 +106,6 @@ body {
 .poster {
   width: 100%;
 }
-
 h2 {
   text-align: center;
   font-size: 24px;
@@ -141,14 +176,24 @@ p {
 
 @media screen and (max-width: 600px) {
   .container {
-    font-size: 14px;
+    font-size: 12px;
+    padding: 1rem;
   }
   .info {
-    grid-template-columns: 1fr;
+    display: block;
   }
   .poster {
     margin: auto;
-    width: auto;
-    max-height: 150px;
+    width: 100%;
+    max-height: auto;
   }
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  text-align: center;
 }
